@@ -11,13 +11,6 @@ public class Customer
         partySize=size;
         partyName=who;
     }
-    public int Wait(int toa, int seatTime)
-    {
-    	//Need to implement loop, just setting groundwork
-    	int waitTime;
-    	waitTime=seatTime-toa;
-    	return waitTime;
-    }
     public int getToa() 
     {
     	return toa;
@@ -29,6 +22,13 @@ public class Customer
     public String getName() 
     {
     	return partyName;
+    }
+    public int Wait(int toa, int seatTime)
+    {
+    	//Need to implement loop, just setting groundwork
+    	int waitTime;
+    	waitTime=seatTime-toa;
+    	return waitTime;
     }
     //full of issues, just putting basic idea in place
     public boolean seated=false;
