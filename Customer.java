@@ -18,6 +18,15 @@ public class Customer
     	waitTime=seatTime-toa;
     	return waitTime;
     }
+    public int getToa() {
+    	return toa;
+    }
+    public int getSize() {
+    	return partySize;
+    }
+    public int getName() {
+    	return partyName;
+    }
     //full of issues, just putting basic idea in place
     public boolean seated=false;
     if(int currentTime>=seatTime) {seated=true;}
