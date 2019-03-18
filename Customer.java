@@ -18,13 +18,16 @@ public class Customer
     	waitTime=seatTime-toa;
     	return waitTime;
     }
-    public int getToa() {
+    public int getToa() 
+    {
     	return toa;
     }
-    public int getSize() {
+    public int getSize() 
+    {
     	return partySize;
     }
-    public int getName() {
+    public String getName() 
+    {
     	return partyName;
     }
     //full of issues, just putting basic idea in place
