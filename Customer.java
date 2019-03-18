@@ -1,4 +1,7 @@
 //Current version full of issues bc I suck ass at coding
+import java.io.*;
+import java.util.*;
+
 public class Customer 
 {
 	int toa;
