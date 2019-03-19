@@ -2,29 +2,38 @@
 import java.io.*;
 import java.util.*;
 
-public class Customer 
+public class Customer
 {
-	int toa;
-    int partySize;
-    String partyName;
-    int seatTime;
-    public Customer(int time, int size, String who)
+	static int toa;
+    static int partySize;
+    static String partyName;
+    static int seatTime;
+    public Customer(int time, int size, String who, int seat)
     {
         toa=time;
         partySize=size;
         partyName=who;
+        seatTime=seat;
     }
-    public int getToa() 
+    public static int getToa() 
     {
     	return toa;
     }
-    public int getSize() 
+    public static int getSize() 
     {
     	return partySize;
     }
-    public String getName() 
+    public static String getName() 
     {
     	return partyName;
+    }
+    public static int getSeat()
+    {
+    	return seatTime;
+    }
+    public String toString()
+    {
+    	return front.data;
     }
     public int Wait(int toa, int seatTime)
     {
@@ -35,5 +44,5 @@ public class Customer
     }
     //full of issues, just putting basic idea in place
     public boolean seated=false;
-    if(int currentTime>=seatTime) {seated=true;}
+    //if(int currentTime>=seatTime) {seated=true;}
 }
