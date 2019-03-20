@@ -26,18 +26,15 @@ public class LaFoodMain extends Customer
 		 
 		PartyQueue Party = new PartyQueue();
 		
-		//nextCommand=fin.next();
+		//nextCommand=front.data ? i think
 		while(!(nextCommand.equalsIgnoreCase("q")))
 		{
-			nextCommand=fin.next();
-			System.out.println(nextCommand);
-			
 			if(nextCommand.equalsIgnoreCase("a")) 
 			{
-				Party.enqueue(fin);
-				toa=fin.nextInt();
-				partySize=fin.nextInt();
-				partyName=fin.next();
+				Party.enqueue(front.data);
+				//toa=front.data need a way to access the toa int within the object (get?)
+				//partySize=front.data; same thing
+				//partyName=front.data; same thing
 			}
 			if(nextCommand.equalsIgnoreCase("t"))
 			{
