@@ -15,7 +15,14 @@ public class Customer
         partyName=who;
         seatTime=seat;
     }
-    public static int getToa() 
+    public Customer(Scanner fin)
+    {
+		toa=fin.nextInt();
+		partySize=fin.nextInt();
+		partyName=fin.next();
+		partyName=partyName+fin.nextLine();
+	}
+	public static int getToa() 
     {
     	return toa;
     }
@@ -33,16 +40,8 @@ public class Customer
     }
     public String toString()
     {
-    	return front.data;
+    	String wait= "";
+    	wait =partyName+", party of "+partySize;
+    	return wait;
     }
-    public int Wait(int toa, int seatTime)
-    {
-    	//Need to implement loop, just setting groundwork
-    	int waitTime;
-    	waitTime=seatTime-toa;
-    	return waitTime;
-    }
-    //full of issues, just putting basic idea in place
-    public boolean seated=false;
-    //if(int currentTime>=seatTime) {seated=true;}
 }
