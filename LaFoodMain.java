@@ -25,9 +25,11 @@ public class LaFoodMain extends Customer
 		}
 	 */
 		PartyQueue Party = new PartyQueue();
-		int waitTime=0;
+		double waitTime=0;
 		Customer didNotSit;
-		
+		int totalParty=0;
+		double avgWait=0;
+		//Something wrong with math, all variables present, something not finding proper avg. should be near jons example on site
 		while(!(Party.isFull()))
 		{
 			nextCommand=fin.next().charAt(0);
@@ -36,13 +38,16 @@ public class LaFoodMain extends Customer
 				Customer mans = new Customer(fin);
 				Party.enqueue(mans);
 				System.out.println("Please wait at the bar, " + mans.toString());
+				totalParty=totalParty+mans.partySize;
 			}
 			if(nextCommand=='T')
 			{
 				seatTime=fin.nextInt();
 				Customer ph = (Customer)Party.dequeue();
+				seatTime=seatTime;
 				System.out.println("Table ready for "+ph.toString()+ " (time= "+seatTime+ " minutes)");
-				waitTime=waitTime+ph.partySize * (seatTime-ph.toa);
+				waitTime=waitTime+ph.partySize*(seatTime-ph.toa);
+				
 			}
 			if(nextCommand=='Q')
 			{
@@ -51,7 +56,9 @@ public class LaFoodMain extends Customer
 				System.out.println("These parties were not seated: "+didNotSit.partyName);
 				break;
 			}
+			
 		}
+		waitTime=waitTime/totalParty;
 		//System.out.println(Party.getFront());
 		System.out.println("The average wait time was: "+waitTime+" minutes");
 	}
