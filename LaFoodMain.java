@@ -12,36 +12,47 @@ public class LaFoodMain extends Customer
 
 	public static void main(String[] args) throws FileNotFoundException
 	{
-		String nextCommand=" ";
+		char nextCommand=' ';
 		Scanner cin= new Scanner(System.in);
 		String fileName;
 		System.out.println("Please enter your file name: ");
 		
 		fileName=cin.nextLine();
 		Scanner fin= new Scanner(new FileReader(fileName));
-//		while(fin.hasNext())
-//		{
-//			System.out.println(fin.nextLine());
-//		}
-		 
-		PartyQueue Party = new PartyQueue();
-		
-		//nextCommand=front.data ? i think
-		while(!(nextCommand.equalsIgnoreCase("q")))
+	/*	while(fin.hasNext())
 		{
-			if(nextCommand.equalsIgnoreCase("a")) 
+			System.out.println(fin.nextLine());
+		}
+	 */
+		PartyQueue Party = new PartyQueue();
+		int waitTime=0;
+		Customer didNotSit;
+		
+		while(!(Party.isFull()))
+		{
+			nextCommand=fin.next().charAt(0);
+			if(nextCommand=='A') 
 			{
-				Party.enqueue(front.data);
-				//toa=front.data need a way to access the toa int within the object (get?)
-				//partySize=front.data; same thing
-				//partyName=front.data; same thing
+				Customer mans = new Customer(fin);
+				Party.enqueue(mans);
+				System.out.println("Please wait at the bar, " + mans.toString());
 			}
-			if(nextCommand.equalsIgnoreCase("t"))
+			if(nextCommand=='T')
 			{
-				Party.dequeue();
 				seatTime=fin.nextInt();
+				Customer ph = (Customer)Party.dequeue();
+				System.out.println("Table ready for "+ph.toString()+ " (time= "+seatTime+ " minutes)");
+				waitTime=waitTime+ph.partySize * (seatTime-ph.toa);
+			}
+			if(nextCommand=='Q')
+			{
+				didNotSit=(Customer)Party.getFront();
+				System.out.println("Simulation terminated");
+				System.out.println("These parties were not seated: "+didNotSit.partyName);
+				break;
 			}
 		}
 		//System.out.println(Party.getFront());
+		System.out.println("The average wait time was: "+waitTime+" minutes");
 	}
 }
