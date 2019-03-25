@@ -1,12 +1,14 @@
 import java.io.*;
 import java.util.*;
 
-public class Sorts 
+public class Sorts extends SortMethods
 {
-
 	public static void main(String[] args) 
 	{
-		
+		int enteredNum=0;
+		System.out.println("Please enter the number of values in your array: ");
+		Scanner cin=new Scanner(System.in);
+		 int arrayNum=(int) (1 + (enteredNum * Math.random()));
 	}
 
 }
