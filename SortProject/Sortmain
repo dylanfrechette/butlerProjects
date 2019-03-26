@@ -3,14 +3,15 @@ import java.util.*;
 
 public class Sorts extends SortMethods
 {
-	private static void ResetArray()
+	private static int[] Reset()
 	{
-		int storedValues;
-		storedValues.clear();
+		int [] storedValues;
+		int [] resetArray=new int [0];
+		storedValues=resetArray;
+		return storedValues;
 	}
 	public static void main(String[] args) 
 	{
-		//potential idea, instead of clearing array for each sort, turn this into a function to run for each sort
 		int enteredNum=0;
 		System.out.println("Please enter the number of values in your array: ");
 		Scanner cin=new Scanner(System.in);
