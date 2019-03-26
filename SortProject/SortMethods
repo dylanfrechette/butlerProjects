@@ -104,7 +104,7 @@ public class SortMethods
 			quickhelp(list,start,pivotpos-1);
 			quickhelp(list,pivotpos+1,stop);
 		}
-		
+		//Partition is set slow, alter code for extracredit where our pivot is better located, easy 5 pts
 		private static int partition(Comparable [] list,
 			int start, int stop)
 		{
