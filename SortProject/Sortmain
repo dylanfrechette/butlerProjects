@@ -3,6 +3,11 @@ import java.util.*;
 
 public class Sorts extends SortMethods
 {
+	private static void ResetArray()
+	{
+		int storedValues;
+		storedValues.clear();
+	}
 	public static void main(String[] args) 
 	{
 		//potential idea, instead of clearing array for each sort, turn this into a function to run for each sort
