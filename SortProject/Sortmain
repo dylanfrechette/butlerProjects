@@ -15,5 +15,9 @@ public class Sorts extends SortMethods
 			int arrayNum=(int) (1 + (enteredNum * Math.random()));
 			storedValues[i]=arrayNum;
 		}
+		if (enteredNum<=100)
+		{
+			System.out.println(storedValues);
+		}
 	}
 }
