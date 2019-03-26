@@ -8,7 +8,11 @@ public class Sorts extends SortMethods
 		int enteredNum=0;
 		System.out.println("Please enter the number of values in your array: ");
 		Scanner cin=new Scanner(System.in);
-		 int arrayNum=(int) (1 + (enteredNum * Math.random()));
+		int [] storedValues= new int [0];
+		for (int i=0;i<enteredNum;i++) 
+		{
+			int arrayNum=(int) (1 + (enteredNum * Math.random()));
+			storedValues[i]=arrayNum;
+		}
 	}
-
 }
