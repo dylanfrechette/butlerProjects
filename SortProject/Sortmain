@@ -6,7 +6,7 @@ public class Sorts extends SortMethods
 	private static int[] Reset()
 	{
 		int [] storedValues;
-		int [] resetArray=new int [0];
+		int [] resetArray=new int [enteredNum];
 		storedValues=resetArray;
 		return storedValues;
 	}
@@ -15,7 +15,7 @@ public class Sorts extends SortMethods
 		int enteredNum=0;
 		System.out.println("Please enter the number of values in your array: ");
 		Scanner cin=new Scanner(System.in);
-		int [] storedValues= new int [0];
+		int [] storedValues= new int [enteredNum];
 		for (int i=0;i<enteredNum;i++) 
 		{
 			int arrayNum=(int) (1 + (enteredNum * Math.random()));
