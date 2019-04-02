@@ -3,27 +3,26 @@ import java.util.*;
 
 public class Sorts extends SortMethods
 {
-	private static int[] Reset()
-	{
-		int [] storedValues;
-		int [] resetArray=new int [enteredNum];
-		storedValues=resetArray;
-		return storedValues;
-	}
-	public static void main(String[] args) 
-	{
-		int enteredNum=0;
-		System.out.println("Please enter the number of values in your array: ");
-		Scanner cin=new Scanner(System.in);
-		int [] storedValues= new int [enteredNum];
-		for (int i=0;i<enteredNum;i++) 
-		{
-			int arrayNum=(int) (1 + (enteredNum * Math.random()));
-			storedValues[i]=arrayNum;
-		}
-		if (enteredNum<=100)
-		{
-			System.out.println(storedValues);
-		}
-	}
+    private static Integer[] reset(Integer[] array)
+    {
+        Integer [] resetArray=new Integer [array.length];
+        array=resetArray;
+        return array;
+    }
+    public static void main(String[] args)
+    {
+        int enteredNum=0;
+        System.out.println("How many items would you wish to sort?");
+        Scanner cin=new Scanner(System.in);
+        Integer [] storedValues= new Integer [enteredNum];
+        for (int i=0;i<enteredNum;i++)
+        {
+            int arrayNum=(int) (1 + (enteredNum * Math.random()));
+            storedValues[i]=arrayNum;
+        }
+        if (enteredNum<=100)
+        {
+            System.out.println(storedValues);
+        }
+    }
 }
