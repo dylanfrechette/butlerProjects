@@ -1,0 +1,83 @@
+import java.io.*;
+import java.util.*;
+
+public class shortSortMain extends SortMethods
+{
+    /*private static Integer[] copyArray(Integer[] array)
+    {
+        Integer [] copy=new Integer [array.length];
+        copy=array;
+        return copy;
+    }*/
+    public static void printArray(Integer[] a){
+        if(a.length<=100){
+            for(int i =0;i<a.length;i++) {System.out.println(a[i]);}
+        }
+    }
+
+    public static void eachSort(Integer[] list, int sort, int go, int end, int totTime, Integer[] copyList){
+        if(sort==1) {
+            go = (int) System.currentTimeMillis();
+            bubble(list);
+            end = (int) System.currentTimeMillis();
+            printArray(list);
+            totTime = end - go;
+            System.out.println("Bubble sort took " + totTime + " ms");
+        }
+        else if(sort==2) {
+            go = (int) System.currentTimeMillis();
+            insertion(list);
+            end = (int) System.currentTimeMillis();
+            printArray(list);
+            totTime = end - go;
+            System.out.println("Insertion sort took " + totTime + " ms");
+        }
+        else if(sort==3) {
+            go = (int) System.currentTimeMillis();
+            selection(list);
+            end = (int) System.currentTimeMillis();
+            printArray(list);
+            totTime = end - go;
+            System.out.println("Selection sort took " + totTime + " ms");
+        }
+        else if(sort==4) {
+            go = (int) System.currentTimeMillis();
+            quick(list);
+            end = (int) System.currentTimeMillis();
+            printArray(list);
+            totTime = end - go;
+            System.out.println("Quick sort took " + totTime + " ms");
+        }
+        else if(sort==5) {
+            go = (int) System.currentTimeMillis();
+            merge(list);
+            end = (int) System.currentTimeMillis();
+            printArray(list);
+            totTime = end - go;
+            System.out.println("Merge sort took " + totTime + " ms");
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        int enteredNum=0;
+        int start, stop, time;
+        start=stop=time=0;
+        System.out.println("How many items would you wish to sort?");
+        Scanner cin=new Scanner(System.in);
+        enteredNum=cin.nextInt();
+        Integer [] storedValues= new Integer [enteredNum];
+        for (int i=0;i<enteredNum;i++)
+        {
+            int arrayNum=(int) (1 + (enteredNum * Math.random()));
+            storedValues[i]=arrayNum;
+        }
+        Integer[] copy = new Integer[storedValues.length];
+        for(int i=0; i<storedValues.length;i++){ copy[i] = storedValues[i];}
+        printArray(storedValues);
+        for(int i=1; i<5; i++){
+            eachSort(storedValues, i, start, stop, time, copy);
+            for(int k=0; i<storedValues.length;i++){ storedValues[i] = copy[i];}
+        }
+    }
+}
