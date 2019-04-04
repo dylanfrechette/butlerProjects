@@ -23,6 +23,7 @@ public class shortSortMain extends SortMethods
             printArray(list);
             totTime = end - go;
             System.out.println("Bubble sort took " + totTime + " ms");
+            for (int i = 0; i < list.length; i++) {list[i] = copyList[i]; }
         }
         else if(sort==2) {
             go = (int) System.currentTimeMillis();
@@ -31,6 +32,7 @@ public class shortSortMain extends SortMethods
             printArray(list);
             totTime = end - go;
             System.out.println("Insertion sort took " + totTime + " ms");
+            for (int i = 0; i < list.length; i++) {list[i] = copyList[i]; }
         }
         else if(sort==3) {
             go = (int) System.currentTimeMillis();
@@ -39,6 +41,7 @@ public class shortSortMain extends SortMethods
             printArray(list);
             totTime = end - go;
             System.out.println("Selection sort took " + totTime + " ms");
+            for (int i = 0; i < list.length; i++) {list[i] = copyList[i]; }
         }
         else if(sort==4) {
             go = (int) System.currentTimeMillis();
@@ -47,6 +50,7 @@ public class shortSortMain extends SortMethods
             printArray(list);
             totTime = end - go;
             System.out.println("Quick sort took " + totTime + " ms");
+            for (int i = 0; i < list.length; i++) {list[i] = copyList[i]; }
         }
         else if(sort==5) {
             go = (int) System.currentTimeMillis();
@@ -55,6 +59,16 @@ public class shortSortMain extends SortMethods
             printArray(list);
             totTime = end - go;
             System.out.println("Merge sort took " + totTime + " ms");
+            for (int i = 0; i < list.length; i++) {list[i] = copyList[i]; }
+        }
+        else if(sort==6) {
+            go = (int) System.currentTimeMillis();
+            quicker(list,0, list.length-1);
+            end = (int) System.currentTimeMillis();
+            printArray(list);
+            totTime = end - go;
+            System.out.println("Our version of  quick sort took " + totTime + " ms");
+            for (int i = 0; i < list.length; i++) {list[i] = copyList[i]; }
         }
     }
 
@@ -75,9 +89,6 @@ public class shortSortMain extends SortMethods
         Integer[] copy = new Integer[storedValues.length];
         for(int i=0; i<storedValues.length;i++){ copy[i] = storedValues[i];}
         printArray(storedValues);
-        for(int i=1; i<5; i++){
-            eachSort(storedValues, i, start, stop, time, copy);
-            for(int k=0; i<storedValues.length;i++){ storedValues[i] = copy[i];}
-        }
+        for(int i=1; i<=6; i++) {eachSort(storedValues, i, start, stop, time,copy);}
     }
 }
