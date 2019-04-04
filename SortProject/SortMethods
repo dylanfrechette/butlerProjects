@@ -85,8 +85,8 @@ public class SortMethods
 
     public static void quick(Comparable [] list) {quickhelp(list,0,list.length-1); }
 
-    //quicker method was found on stack overflow and used to enhance our quick method above by using the median of
-    // three to set our partition
+    //quicker method was found on stack overflow and used to enhance our quick method,based on post originally about
+    //median of three partitioning of quicksort
     // https://stackoverflow.com/questions/23158640/quick-sort-algorithm-median-of-three
     public static void quicker(Integer[] list, int start, int end){
         int left=start;
