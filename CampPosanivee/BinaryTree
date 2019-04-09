@@ -1,3 +1,4 @@
+public class BST // binary search tree
 {
 	private class treenode
 	{
