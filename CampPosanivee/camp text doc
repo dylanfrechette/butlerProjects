@@ -1,9 +1,0 @@
-H		            Help: print a list of commands
-E name age sex  Enroll a new camper (insert)
-W name		      Withdraw a camper (delete)
-D name		      Display the age and gender of a camper
-A		            Print the average age of the campers
-L 	          	List all campers names in alphabetical order
-S 	          	Print the number of boy and girl campers
-P	             	List all campers names in preorder
-Q	            	Quit

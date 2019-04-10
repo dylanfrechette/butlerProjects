@@ -1,0 +1,21 @@
+10
+1 2 6 10
+Squidward is asleep behind the cash register.
+2 1 3 7
+There is a patch of kelp in the corner.
+3 2 4 8
+You see an Alaskan Bull Worm fossil embedded in the wall.
+4 3 5 9
+There is an abandoned Eels and Escalators board on the ground.
+5 4 6 10
+Spongebob's Square pants are hanging from the wall.
+6 1 5 7
+Patrick is staring blankly at you from under his rock.
+7 2 6 8
+A stray snail with its back to you is eating something, you don't want to know what.
+8 3 7 9
+You've stumbled upon the Mermalair, why would Krabs even be here?
+9 4 8 10
+You fall, and rip your pants.
+10 1 5 9
+The Bikini Bottom Bubble Band is practicing for the Bubble Bowl in here, "Is mayonnaise an instrument?"

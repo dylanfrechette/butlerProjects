@@ -1,6 +1,10 @@
 
-	public class QueueLL implements Queue
+public class PartyQueue implements Queue 
+{
+	/*public String toString()
 	{
+		return front.data;
+	}*/
 		public class node
 		{
 			private Object data;
@@ -9,7 +13,7 @@
 		node front, back;
 		int count;
 		
-		public QueueLL()
+		public PartyQueue()
 		{
 			count=0;
 			front=back=null;
@@ -48,4 +52,4 @@
 			front=back=null;
 		}
 		public int size() { return count; }	
-	}
+}
