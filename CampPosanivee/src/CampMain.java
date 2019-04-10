@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 
+import javax.swing.tree.TreeNode;
+
 
 
 public class CampMain {
@@ -25,6 +27,7 @@ public class CampMain {
 	}
 	public static void main(String[] args) throws FileNotFoundException
 	{	
+	int [] camperAge= new int [TreeNode.length()]; 
 	Help();
 	System.out.println("Please enter what you would like to do: ");
 	Scanner cin=new Scanner(System.in);
@@ -49,7 +52,7 @@ public class CampMain {
 			else if (cin == 'S')
 				System.out.println("Number of boys: "+boys+" Number of girls: "+girls);
 			else if (cin == 'P')
-				System.out.println("List of campers in preorder: ")
+				System.out.println("List of campers in preorder: ");
 			else if (cin != 'Q')
 			{
 				System.out.println("That isn't a valid input, please try again: ");
