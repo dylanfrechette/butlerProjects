@@ -1,9 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-import javax.swing.tree.TreeNode;
-
-
 
 public class CampMain {
 
@@ -11,11 +8,18 @@ public class CampMain {
 	public static Scanner Help() throws FileNotFoundException
 {
 	Scanner fin=new Scanner (new FileReader("camp.txt"));
-	while (fin.hasNextLine()){
+	while (fin.hasNextLine())
+	{
 		System.out.println(fin.nextLine());
 	}
 	return fin;
 }
+	public static String [] Enroll()
+	{
+		String [] camper= new String [] {"name", "age", "sex"};
+		insert(camper);
+		return camper;
+	}
 	public static int avgAge()
 	{
 		ing avgAge = 0;
@@ -27,7 +31,6 @@ public class CampMain {
 	}
 	public static void main(String[] args) throws FileNotFoundException
 	{	
-	int [] camperAge= new int [TreeNode.length()]; 
 	Help();
 	System.out.println("Please enter what you would like to do: ");
 	Scanner cin=new Scanner(System.in);
@@ -37,7 +40,7 @@ public class CampMain {
 
 			else if (cin == 'E')
 				System.out.println("Enroll a new camper: ");
-
+				Enroll();
 
 			else if (cin == 'W')
 				System.out.println("Withdraw a camper: ");
