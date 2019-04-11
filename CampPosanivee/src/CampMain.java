@@ -2,69 +2,61 @@ import java.io.*;
 import java.util.*;
 
 
-public class CampMain {
+public class CampMain extends BST {
 
-	//Displays Help Screen with prompts to input
-	public static Scanner Help() throws FileNotFoundException
-{
-	Scanner fin=new Scanner (new FileReader("camp.txt"));
-	while (fin.hasNextLine())
-	{
-		System.out.println(fin.nextLine());
-	}
-	return fin;
-}
-	public static String [] Enroll()
-	{
-		String [] camper= new String [] {"name", "age", "sex"};
-		insert(camper);
-		return camper;
-	}
-	public static int avgAge()
-	{
-		ing avgAge = 0;
-		for (int i=0; i < numCampers; i++)
-		{
-		avgAge = avgAge + camperAge[i];
-		}
-		return avgAge;
-	}
-	public static void main(String[] args) throws FileNotFoundException
-	{	
-	Help();
-	System.out.println("Please enter what you would like to do: ");
-	Scanner cin=new Scanner(System.in);
-		while(cin != 'Q')
-		{
-			if (cin == 'H') Help();
+    //Displays Help Screen with prompts to input
+    public static void listHelp() throws FileNotFoundException{
+        Scanner helpScan = new Scanner(new FileReader("camp.txt"));
+        while (helpScan.hasNextLine()) {
+            System.out.println(helpScan.nextLine());
+        }
+    }
 
-			else if (cin == 'E')
-				System.out.println("Enroll a new camper: ");
-				Enroll();
+    public void enroll(int a, int b) throws FileNotFoundException {
+        String name = fin.next();
+        int age = fin.nextInt();
+        String sex = fin.next();
+        if (sex.equalsIgnoreCase("M")) { a++; }
+        else {b++;}
+        Camper camper = new Camper(name, age, sex);
+        insert(camper);
+    }
 
-			else if (cin == 'W')
-				System.out.println("Withdraw a camper: ");
+    public static int avgAge(int counter, Camper x) {
+        int avgAge = 0;
+        for (int i = 0; i < counter; i++) {
+            avgAge += (x.getAge())/i;
+        }
+        return avgAge;
+    }
 
-			else if (cin == 'D')
-				System.out.println("Age and Gender of selected camper: ");
-
-			else if (cin == 'A')
-				System.out.println("Average age of campers: "+ avgAge());
-			else if (cin == 'L')
-				System.out.println("Alphabetical list of campers: ");
-			else if (cin == 'S')
-				System.out.println("Number of boys: "+boys+" Number of girls: "+girls);
-			else if (cin == 'P')
-				System.out.println("List of campers in preorder: ");
-			else if (cin != 'Q')
-			{
-				System.out.println("That isn't a valid input, please try again: ");
-				cin(System.in);
-			}
-
-			Help();
-			cin(System.in);
-		}
-	System.out.println("Finished editing Camp Roster");	
-	}
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner fin = new Scanner(new FileReader("Campers.txt"));
+        boolean running=true;
+        String command = " ";
+        String camper = " ";
+        int count, bCount,gCount;
+        count=bCount=gCount= 0;
+        BST tree = new BST();
+        System.out.println("Hello! Welcome to Camp Posanivee!");
+        while (running) {
+            command = fin.next();
+            System.out.println("Command: " + command);
+            if (command.equalsIgnoreCase("H")) {
+                listHelp();
+            } else if (command.equalsIgnoreCase("E")) {
+                enroll(bCount, gCount);
+            } else if (command.equalsIgnoreCase("W")) {camper= fin.next(); delete(camper);}
+            else if(command.equalsIgnoreCase("D")){camper=fin.next(); lookup(camper);}
+            else if (command.equalsIgnoreCase("A")){count = bCount+gCount;
+                avgAge(count, xCamper);
+            }
+            else if(command.equalsIgnoreCase("L")){
+                traversal(r, INORDER);
+            }
+            else if(command.equalsIgnoreCase("S")){System.out.println("Boys: " + bCount +"\n" + "Girls: " + gCount);}
+            else if(command.equalsIgnoreCase("P")){traversal(r, PREORDER);}
+            else if(command.equalsIgnoreCase("Q")){running=false;}
+    }
+    }
 }
