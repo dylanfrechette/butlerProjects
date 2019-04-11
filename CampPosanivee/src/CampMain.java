@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+//Found big issue, delete, insert, etc. are all nonstatic methods, which can't be called in our main, which is static
 
 public class CampMain extends BST {
 
@@ -18,7 +19,7 @@ public class CampMain extends BST {
         String sex = fin.next();
         if (sex.equalsIgnoreCase("M")) { a++; }
         else {b++;}
-        Camper camper = new Camper(name, age, sex);
+        Comparable camper = new Camper(name, age, sex);
         insert(camper);
     }
 
