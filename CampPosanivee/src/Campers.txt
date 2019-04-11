@@ -1,5 +1,5 @@
 A
-E Jon 100 M
+E Jon 80 M
 E Gupta 69 M
 E Amanda 48 F
 W Gupta
