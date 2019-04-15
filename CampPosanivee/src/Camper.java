@@ -12,7 +12,7 @@ return CampyBoys;
 }
 
     public Comparable [] Campers(String callsign, int oldness, String gender){
-        Comparable [] camper= new Comparable []{callsign, oldness, gender};
+        Comparable [] camper= new Comparable [] {callsign, oldness, gender};
         name = callsign;
         age = oldness;
         sex = gender;

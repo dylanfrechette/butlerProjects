@@ -3,7 +3,8 @@ import java.util.*;
 
 //Found big issue, delete, insert, etc. are all nonstatic methods, which can't be called in our main, which is static
 
-public class CampMain extends BST {
+public class CampMain //extends BST 
+{
 
     //Displays Help Screen with prompts to input
     public static void listHelp() throws FileNotFoundException{
@@ -13,7 +14,7 @@ public class CampMain extends BST {
         }
     }
 
-    public void enroll(int a, int b) throws FileNotFoundException {
+    public static void enroll(int a, int b) throws FileNotFoundException {
         String name = CampyBoys.next();
         int age = CampyBoys.nextInt();
         String sex = CampyBoys.next();
@@ -22,7 +23,6 @@ public class CampMain extends BST {
         Comparable camper = new Camper(name, age, sex);
         insert(camper);
     }
-
     public static int avgAge(int counter, Camper x) {
         int avgAge = 0;
         for (int i = 0; i < counter; i++) {
@@ -42,7 +42,7 @@ public class CampMain extends BST {
         BST tree = new BST();
         System.out.println("Hello! Welcome to Camp Posanivee!");
         while (running) {
-            command = fin.next();
+            command = CampyBoys.next();
             System.out.println("Command: " + command);
             if (command.equalsIgnoreCase("H")) {
                 listHelp();
