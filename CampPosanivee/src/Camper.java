@@ -11,10 +11,12 @@ public static Scanner CampBoiz() throws FileNotFoundException{
 return CampyBoys;
 }
 
-    public Camper(String callsign, int oldness, String gender){
+    public Comparable [] Campers(String callsign, int oldness, String gender){
+        Comparable [] camper= new Comparable []{callsign, oldness, gender};
         name = callsign;
         age = oldness;
         sex = gender;
+        return camper;
     }
 
     public String getName(){
