@@ -14,9 +14,9 @@ public class CampMain extends BST {
     }
 
     public void enroll(int a, int b) throws FileNotFoundException {
-        String name = fin.next();
-        int age = fin.nextInt();
-        String sex = fin.next();
+        String name = CampyBoys.next();
+        int age = CampyBoys.nextInt();
+        String sex = CampyBoys.next();
         if (sex.equalsIgnoreCase("M")) { a++; }
         else {b++;}
         Comparable camper = new Camper(name, age, sex);
@@ -32,7 +32,8 @@ public class CampMain extends BST {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner fin = new Scanner(new FileReader("Campers.txt"));
+        //Found fin to be redundant bc CampyBoys in constructor class
+        //Scanner fin = new Scanner(new FileReader("Campers.txt"));
         boolean running=true;
         String command = " ";
         String camper = " ";
@@ -47,8 +48,8 @@ public class CampMain extends BST {
                 listHelp();
             } else if (command.equalsIgnoreCase("E")) {
                 enroll(bCount, gCount);
-            } else if (command.equalsIgnoreCase("W")) {camper= fin.next(); delete(camper);}
-            else if(command.equalsIgnoreCase("D")){camper=fin.next(); lookup(camper);}
+            } else if (command.equalsIgnoreCase("W")) {camper= CampyBoys.next(); delete(camper);}
+            else if(command.equalsIgnoreCase("D")){camper=CampyBoys.next(); lookup(camper);}
             else if (command.equalsIgnoreCase("A")){count = bCount+gCount;
                 avgAge(count, xCamper);
             }
