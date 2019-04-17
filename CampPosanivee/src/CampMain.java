@@ -1,10 +1,8 @@
 import java.io.*;
 import java.util.*;
 
-//Found big issue, delete, insert, etc. are all nonstatic methods, which can't be called in our main, which is static
 
-public class CampMain //extends BST 
-{
+public class CampMain{
 
     //Displays Help Screen with prompts to input
     public static void listHelp() throws FileNotFoundException{
@@ -14,51 +12,128 @@ public class CampMain //extends BST
         }
     }
 
-    public static void enroll(int a, int b) throws FileNotFoundException {
-        String name = CampyBoys.next();
-        int age = CampyBoys.nextInt();
-        String sex = CampyBoys.next();
-        if (sex.equalsIgnoreCase("M")) { a++; }
-        else {b++;}
-        Comparable camper = new Camper(name, age, sex);
-        insert(camper);
-    }
-    public static int avgAge(int counter, Camper x) {
-        int avgAge = 0;
-        for (int i = 0; i < counter; i++) {
-            avgAge += (x.getAge())/i;
-        }
-        return avgAge;
+    private static void enroll(BST t, Scanner s) //G2G
+    {
+        t.insert(new Camper(s));
+        System.out.println("New camper added.");
     }
 
+    private static void withdraw(BST t, Camper key) //G2G
+    {
+        t.delete(key);
+        System.out.println("Camper withdrawn.");
+    }
+
+    private static void display(Camper key) //G2G
+    {
+        System.out.println( "  Name: "+key.name+"\n"+"  Age: "+key.age+"\n"+"  Gender: "+key.gender );
+    }
+    private static void genCount(BST t) //FIX THIS
+    {
+        int bCount=0;
+        int gCount=0;
+        t.reset(BST.INORDER);
+        while(t.hasNext()) {
+            if ( (((Camper)(t.getNext())).getSex())=='M' )
+                bCount++;
+            else if ( (((Camper)(t.getNext())).getSex())=='F' )
+                gCount++;
+        }
+        System.out.println("Camper count:\n  Boys:  "+bCount+"\n  Girls: "+gCount);
+    }
+
+    public static Camper campLookup(BST t, Scanner s) //G2G
+    {
+
+        String search = s.next();
+        Camper key = new Camper(0,'A',search);
+
+        Camper answer = (Camper)
+                t.lookup(key);
+
+        if(answer==null)
+        {
+            System.out.println(search+" not found");
+            return null;
+        }
+        else
+            return answer;
+    }
+
+    private static void average(BST t)
+    {
+        t.reset(BST.INORDER);
+
+        double totalAge=0;
+        double count=0;
+        while(t.hasNext())
+        {
+            totalAge += (double)( (Camper)t.getNext() ).getAge();
+            count++;
+        }
+
+        if (count>0)
+        {
+            double avg = (double)(totalAge / count);
+            System.out.println("The average age is: "+avg);
+        }
+        else
+            System.out.println("Error: No campers");
+    }
+
+
+
     public static void main(String[] args) throws FileNotFoundException {
-        //Found fin to be redundant bc CampyBoys in constructor class
-        //Scanner fin = new Scanner(new FileReader("Campers.txt"));
+        Scanner fin = new Scanner(new FileReader("Campers.txt"));
         boolean running=true;
         String command = " ";
         String camper = " ";
         int count, bCount,gCount;
         count=bCount=gCount= 0;
-        BST tree = new BST();
+        BST camp = new BST();
         System.out.println("Hello! Welcome to Camp Posanivee!");
+        //may create a function to run this portion of the program , this may help with static/non-static interference
         while (running) {
-            command = CampyBoys.next();
+            command = fin.next();
+            Camper nodeKey = new Camper();
             System.out.println("Command: " + command);
-            if (command.equalsIgnoreCase("H")) {
+            switch (command){
+                case "H" :
+                System.out.println("Help");
                 listHelp();
-            } else if (command.equalsIgnoreCase("E")) {
-                enroll(bCount, gCount);
-            } else if (command.equalsIgnoreCase("W")) {camper= CampyBoys.next(); delete(camper);}
-            else if(command.equalsIgnoreCase("D")){camper=CampyBoys.next(); lookup(camper);}
-            else if (command.equalsIgnoreCase("A")){count = bCount+gCount;
-                avgAge(count, xCamper);
+                break;
+                case "E" :
+                    System.out.println("Enroll");
+                enroll(camp, fin);
+                break;
+                case "W" :
+                    System.out.println("Withdraw");
+                nodeKey = campLookup(camp, fin);
+                withdraw(camp, nodeKey);
+                break;
+                case "D" :
+                    System.out.println("Camper Info: " + camper);
+                    nodeKey = campLookup(camp, fin);
+                    display(nodeKey);
+                    break;
+                case "A" :
+                    System.out.println("Average age of campers");
+                    average(camp);
+                    break;
+                case "L" :
+                    System.out.println("List");
+                    BST.traversal(camp, BST.INORDER);
+                    break;
+                case "S":
+                    genCount(camp);
+                    break;
+                case "P":
+                    BST.traversal(camp, BST.PREORDER);
+                    break;
+                case "Q":
+                    running=false;
             }
-            else if(command.equalsIgnoreCase("L")){
-                traversal(r, INORDER);
-            }
-            else if(command.equalsIgnoreCase("S")){System.out.println("Boys: " + bCount +"\n" + "Girls: " + gCount);}
-            else if(command.equalsIgnoreCase("P")){traversal(r, PREORDER);}
-            else if(command.equalsIgnoreCase("Q")){running=false;}
-    }
+        }
+        System.out.println("Command: End Program\n\nProgram Terminated");
     }
 }
