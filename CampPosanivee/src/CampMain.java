@@ -60,7 +60,7 @@ public class CampMain{
             return answer;
     }
 
-    private static void average(BST t)
+    private static void average(BST t) //G2G
     {
         t.reset(BST.INORDER);
 
@@ -82,17 +82,17 @@ public class CampMain{
     }
 
 
-
     public static void main(String[] args) throws FileNotFoundException {
+
+        BST camp = new BST();
+        System.out.println("Hello! Welcome to Camp Posanivee!");
+        //may create a function to run this portion of the program , this may help with static/non-static interference
         Scanner fin = new Scanner(new FileReader("Campers.txt"));
         boolean running=true;
         String command = " ";
         String camper = " ";
         int count, bCount,gCount;
         count=bCount=gCount= 0;
-        BST camp = new BST();
-        System.out.println("Hello! Welcome to Camp Posanivee!");
-        //may create a function to run this portion of the program , this may help with static/non-static interference
         while (running) {
             command = fin.next();
             Camper nodeKey = new Camper();
@@ -122,13 +122,13 @@ public class CampMain{
                     break;
                 case "L" :
                     System.out.println("List");
-                    BST.traversal(camp, BST.INORDER);
+                    camp.reset(camp.INORDER);
                     break;
                 case "S":
                     genCount(camp);
                     break;
                 case "P":
-                    BST.traversal(camp, BST.PREORDER);
+                    camp.reset(camp.PREORDER);
                     break;
                 case "Q":
                     running=false;
