@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+/* so im gonna finish building this gui and make it cleaner tomorrow. once the functions are built in this general template we can 
+paste them into the new gui code because itll generally follow the same actionlisteners. 
+
  */
 
 package my.jerry;
