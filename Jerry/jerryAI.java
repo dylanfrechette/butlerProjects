@@ -21,6 +21,7 @@ public static void AI()
             selectedSpot=1+(spots.length*rand());
             if(emptySpot==false) selectedSpot=1+(spots.length*rand());
         }
+        selectedSpots[spaces]=selectedSpot;
         }
         moveCount++;
     }
