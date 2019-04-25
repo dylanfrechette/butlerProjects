@@ -36,6 +36,7 @@ public boolean emptySpot()
 }
 public boolean playing()
 {
+    //remember to check for wincons each runthrough
     if (moveCount<9) return true;
     else return false;
 }
