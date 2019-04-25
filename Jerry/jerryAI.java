@@ -25,4 +25,17 @@ public static void AI()
         moveCount++;
     }
 }
+public boolean emptySpot()
+{
+    for(int i=0;i<=spots.length();i++)
+    {
+        if(selectedSpot==spots[i]) return false;
+        else return true;
+    }
+}
+public boolean playing()
+{
+    if (moveCount<9) return true;
+    else return false;
+}
 }
