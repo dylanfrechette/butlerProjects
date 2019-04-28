@@ -30,7 +30,7 @@ public static void AI()
     {
     for(int spaces=9;spaces>0;spaces--)
         {
-        if(isTurnFirst() || isTurnSecond())
+        if((isTurnFirst()==true) || (isTurnSecond() == true))
             {
             if( moveCount==0) selectedSpot=5;
             else
