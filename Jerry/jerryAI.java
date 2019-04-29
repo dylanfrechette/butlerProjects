@@ -40,12 +40,13 @@ public static void AI()
              while(emptySpot==false) selectedSpot=1+(spots.length*rand());
             }
         selectedSpots.add(selectedSpot);
-        }
+        
         //Calls function to refresh size and values of arraylists after each addition of a new spot
         formSets();
        //Checks to see if AI's new move is a winner
         winCons(AISet,winSet);
         if(winCons(AISet,winSet)==true) System.out.println("You lose :(");
+        }
         moveCount++;
     }
 }
