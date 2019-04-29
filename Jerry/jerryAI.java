@@ -3,6 +3,7 @@ import java.util.*;
 
 public class jerryAI
 {
+    //Forms the sets to compare for wincons
     private static void formSets()
     {
         for(int i=0;i<9;i++)
@@ -28,6 +29,9 @@ public static void AI()
     Set<Integer> winSet = new TreeSet<Integer>();
     while(playing)
     {
+         //Checks to see if player wins before AI makes move
+         winCons(playerSet,winSet);
+         if(winCons(playerSet,winSet)==true) System.out.println("Congratulations, you win!");
     for(int spaces=9;spaces>0;spaces--)
         {
         if((isTurnFirst()==true) || (isTurnSecond() == true))
@@ -37,18 +41,20 @@ public static void AI()
             }
         selectedSpots.add(selectedSpot);
         }
-        winCons(playerSet,winSet);
-        if(winCons(playerSet,winSet)==true) System.out.println("Congratulations, you win!");
-        wincons(AISet,winSet);
+        //Calls function to refresh size and values of arraylists after each addition of a new spot
+        formSets();
+       //Checks to see if AI's new move is a winner
+        winCons(AISet,winSet);
         if(winCons(AISet,winSet)==true) System.out.println("You lose :(");
         moveCount++;
     }
 }
+//Checks to see if spot is already occupied
 private boolean emptySpot()
 {
     for(int i=0;i<=spots.length();i++)
     {
-        if(selectedSpot==spots[i]|| playerMoves==spots[i])
+        if(selectedSpot==selectedSpots[i]|| selectedSpot==playerMoves[i])
         {
             return false;
             break;
@@ -56,16 +62,19 @@ private boolean emptySpot()
          else return true;
     }
 }
+//uses sets to check if a wincon is a subset of player arrays
 private boolean winCons(Set<T> setA, Set<T> setB)
 {
     return setB.containsAll(setA);
 }
+//checks if wincon is done, if it is game ends
 private boolean playing()
 {
     //remember to check for wincons each runthrough
     if (moveCount<9 && winCons==false) return true;
     else return false;
 }
+//These two are to check to make sure it's the AI's turn
 private static boolean isTurnFirst()
 {
     if(selectedSpots.size()==playerMoves.size()) return true;
