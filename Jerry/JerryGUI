@@ -3,9 +3,15 @@ organized the board to look more like it should. Created action listener class f
 how the program should respond to a move from the player.. player clicks a button, program disables button to display move
 
 next im going to work on drawing lines connecting the buttons that display the possible moves. 
- */
 
 package my.jerry;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D; 
+import java.io.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 
 /**
  *
@@ -25,7 +31,7 @@ public class JerryUI extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+    public void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -115,6 +121,7 @@ public class JerryUI extends javax.swing.JFrame {
             }
         });
 
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -134,7 +141,7 @@ public class JerryUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)))
+                        .addGap(40, 40, 40)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -149,7 +156,7 @@ public class JerryUI extends javax.swing.JFrame {
                                     .addComponent(jToggleButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
+                                .addGap(40, 40, 40)
                                 .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -197,6 +204,13 @@ public class JerryUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                        
+    class myPanel extends JPanel {
+	public void paintComponent(Graphics g) {
+        //Graphics g = new jPanel1.getGraphics();
+        g.setColor(Color.black);
+        g.drawLine(20,20,1000,1000);
+        } 
+    }
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -239,16 +253,19 @@ public class JerryUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                              
 
-    
     /**
      * @param args the command line arguments
      */
+    /*
+    public void addLine() {
+        lines.add(new Line(100,200,100,300,color.black));
+        repaint()
+    }
+    */
+    
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
