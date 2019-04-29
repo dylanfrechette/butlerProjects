@@ -13,6 +13,29 @@ public class jerryAI
             winSet.add(winCheck[i]);
         }
     }
+    //uses sets to check if a wincon is a subset of player arrays
+private boolean winCons(Set<T> setA, Set<T> setB)
+{
+    return setB.containsAll(setA);
+}
+//checks if wincon is done, if it is game ends
+private boolean playing()
+{
+    //remember to check for wincons each runthrough
+    if (moveCount<9 && winCons==false) return true;
+    else return false;
+}
+//These two are to check to make sure it's the AI's turn
+private static boolean isTurnFirst()
+{
+    if(selectedSpots.size()==playerMoves.size()) return true;
+    else return false;
+}
+private static boolean isTurnSecond()
+{
+    if(selectedSpots.size()<playerMoves.size()) return true;
+    else return false;
+}
 public static void AI()
 {
     int [] spots=new int [] {1,2,3,4,5,6,7,8,9};
@@ -62,28 +85,5 @@ private boolean emptySpot()
         }
          else return true;
     }
-}
-//uses sets to check if a wincon is a subset of player arrays
-private boolean winCons(Set<T> setA, Set<T> setB)
-{
-    return setB.containsAll(setA);
-}
-//checks if wincon is done, if it is game ends
-private boolean playing()
-{
-    //remember to check for wincons each runthrough
-    if (moveCount<9 && winCons==false) return true;
-    else return false;
-}
-//These two are to check to make sure it's the AI's turn
-private static boolean isTurnFirst()
-{
-    if(selectedSpots.size()==playerMoves.size()) return true;
-    else return false;
-}
-private static boolean isTurnSecond()
-{
-    if(selectedSpots.size()<playerMoves.size()) return true;
-    else return false;
 }
 }
