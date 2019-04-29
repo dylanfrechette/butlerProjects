@@ -13,6 +13,19 @@ public class jerryAI
             winSet.add(winCheck[i]);
         }
     }
+    //Checks to see if spot is already occupied
+private boolean emptySpot()
+{
+    for(int i=0;i<=spots.length();i++)
+    {
+        if(selectedSpot==selectedSpots[i]|| selectedSpot==playerMoves[i])
+        {
+            return false;
+            break;
+        }
+         else return true;
+    }
+}
     //uses sets to check if a wincon is a subset of player arrays
 private boolean winCons(Set<T> setA, Set<T> setB)
 {
@@ -57,7 +70,7 @@ public static void AI()
          if(winCons(playerSet,winSet)==true) System.out.println("Congratulations, you win!");
     for(int spaces=9;spaces>0;spaces--)
         {
-        if((isTurnFirst()==true) || (isTurnSecond() == true))
+        if(((isTurnFirst()==true)&&(isTurnSecond()==false))||((isTurnFirst()==false)&&isTurnSecond()==true))
             {
              selectedSpot=1+(spots.length*rand());
              while(emptySpot==false) selectedSpot=1+(spots.length*rand());
@@ -71,19 +84,6 @@ public static void AI()
         if(winCons(AISet,winSet)==true) System.out.println("You lose :(");
         }
         moveCount++;
-    }
-}
-//Checks to see if spot is already occupied
-private boolean emptySpot()
-{
-    for(int i=0;i<=spots.length();i++)
-    {
-        if(selectedSpot==selectedSpots[i]|| selectedSpot==playerMoves[i])
-        {
-            return false;
-            break;
-        }
-         else return true;
     }
 }
 }
