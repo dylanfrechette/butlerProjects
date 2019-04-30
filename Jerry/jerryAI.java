@@ -13,7 +13,7 @@ public class jerryAI
             winSet.add(winCheck[i]);
         }
     }
-    //Checks to see if spot is already occupied
+//Checks to see if spot is already occupied
 private boolean emptySpot()
 {
     for(int i=0;i<=spots.length();i++)
@@ -26,7 +26,7 @@ private boolean emptySpot()
          else return true;
     }
 }
-    //uses sets to check if a wincon is a subset of player arrays
+//uses sets to check if a wincon is a subset of player arrays
 private boolean winCons(Set<T> setA, Set<T> setB)
 {
     return setB.containsAll(setA);
@@ -78,12 +78,12 @@ public static void AI()
         selectedSpots.add(selectedSpot);
         
         //Calls function to refresh size and values of arraylists after each addition of a new spot
-        formSets();
-       //Checks to see if AI's new move is a winner
-        winCons(AISet,winSet);
-        if(winCons(AISet,winSet)==true) System.out.println("You lose :(");
+        formSets(); 
         }
         moveCount++;
+        //Checks to see if AI's new move is a winner
+        winCons(AISet,winSet);
+        if(winCons(AISet,winSet)==true)  System.out.println("You lose :(");
     }
 }
 }
