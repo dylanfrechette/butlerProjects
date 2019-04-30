@@ -1,10 +1,12 @@
 import java.io.*;
 import java.util.*;
 
+import com.sun.tools.javac.code.Attribute.Array;
+
 public class jerryAI
 {
     //Forms the sets to compare for wincons
-    private static void formSets()
+    public static void formSets()
     {
         for(int i=0;i<9;i++)
         {
@@ -14,7 +16,7 @@ public class jerryAI
         }
     }
 //Checks to see if spot is already occupied
-private boolean emptySpot()
+public static boolean emptySpot()
 {
     for(int i=0;i<=spots.length();i++)
     {
@@ -27,24 +29,24 @@ private boolean emptySpot()
     }
 }
 //uses sets to check if a wincon is a subset of player arrays
-private boolean winCons(Set<T> setA, Set<T> setB)
+public static boolean winCons(Set<Integer> setA, Set<Integer> setB)
 {
     return setB.containsAll(setA);
 }
 //checks if wincon is done, if it is game ends
-private boolean playing()
+public static boolean playing()
 {
     //remember to check for wincons each runthrough
     if (moveCount<9 && winCons==false) return true;
     else return false;
 }
 //These two are to check to make sure it's the AI's turn
-private static boolean isTurnFirst()
+public static boolean isTurnFirst()
 {
     if(selectedSpots.size()==playerMoves.size()) return true;
     else return false;
 }
-private static boolean isTurnSecond()
+public static boolean isTurnSecond()
 {
     if(selectedSpots.size()<playerMoves.size()) return true;
     else return false;
@@ -58,7 +60,11 @@ public static void AI()
     int moveCount=0;
     boolean playing=true;
     boolean emptySpot=true;
-    int [] winCheck= new int []{{1,2,3},{1,4,8},{1,5,9},{2,4,7},{2,6,9},{3,5,7},{3,6,9},{4,5,6},{7,8,9}};
+    List <Integer> winCombos = new <ArrayList<Integer>> ({1,2,3},{1,4,8},{1,5,9},{2,4,7},{2,6,9},{3,5,7},{3,6,9},{4,5,6},{7,8,9});
+    ArrayList<ArrayList<Integer>> winCheck= new ArrayList<ArrayList<Integer>>();
+    wincheck.asList(winCombos);
+    // winCheck.add((ArrayList<Integer>){1,2,3}; winCheck.add({1,4,8}); winCheck.add({1,5,9}); winCheck.add({2,4,7}); winCheck.add({2,6,9});
+    // winCheck.add({3,5,7}); winCheck.add({3,6,9}); winCheck.add({4,5,6}); winCheck.add({7,8,9});
     //Makes sets to check for subsets as wincons, compares them, true is a win, false is a continue
     Set<Integer> playerSet = new TreeSet<Integer>();
     Set<Integer> AISet = new TreeSet<Integer>();
@@ -72,8 +78,8 @@ public static void AI()
         {
         if(((isTurnFirst()==true)&&(isTurnSecond()==false))||((isTurnFirst()==false)&&isTurnSecond()==true))
             {
-             selectedSpot=1+(spots.length*rand());
-             while(emptySpot==false) selectedSpot=1+(spots.length*rand());
+             selectedSpot=1+(spots.length*Random());
+             while(emptySpot==false) selectedSpot=1+(spots.length*Random());
             }
         selectedSpots.add(selectedSpot);
         
