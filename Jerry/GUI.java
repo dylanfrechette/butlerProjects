@@ -179,6 +179,15 @@ public class gui extends JFrame implements ActionListener
 
     public static void main(String [] args)
     {
+        String turn;
+        Component frame;
+        Object[] options = { "Second", "First" };
+        int action = JOptionPane.showOptionDialog(frame, "Welcome to Jerry Tac Toe!\nWould you like to go first or second?",
+                "Welcome!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if (action == JOptionPane.YES_OPTION)
+            turn = "X";
+        else if (action == JOptionPane.NO_OPTION)
+            turn = "O";
         gui noOpinions=new gui();
     }
 }
