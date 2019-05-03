@@ -3,15 +3,33 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
+import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 
 class close extends WindowAdapter
 {
     public void windowClosing(WindowEvent e)
     {
-        System.out.println("You can do it.");
+        System.out.println("Thanks for playing!");
         System.exit(0);
     }
 }
+
+/*Kishan Gandhi
+This class is to alter the JButton class and allow us to use round buttons instead of square
+ */
 class RoundButton extends JButton {
 
     private int random(int low, int hi)
@@ -24,6 +42,7 @@ class RoundButton extends JButton {
                 random(0,235), random(0,235) );
         return color;
     }
+
 
     protected void paintComponent(Graphics g) {
         if (getModel().isArmed()) {
@@ -54,6 +73,21 @@ public class gui extends JFrame implements ActionListener
 {
     JButton spot1, spot2, spot3, spot4,spot5,spot6,spot7,spot8,spot9;
     JTextArea input;
+    List<Integer> playerMoves = new ArrayList<>();
+    List<Integer> cpuMoves = new ArrayList<>();
+    List<Integer> win1 = Arrays.asList(1,2,3);
+    List<Integer> win2 =  Arrays.asList(1,5,9);
+    List<Integer> win3 = Arrays.asList(1,4,8);
+    List<Integer> win4 = Arrays.asList(2,4,7);
+    List<Integer> win5 = Arrays.asList(2,6,9);
+    List<Integer> win6 = Arrays.asList(3,5,7);
+    List<Integer> win7 = Arrays.asList(4,5,6);
+    List<Integer> win8 = Arrays.asList(7,8,9);
+    List<List<Integer>> winCombos = Arrays.asList(win1, win2,win3,win4,win5,win6,win7,win8);
+    List<JButton> clearBoard = Arrays.asList(spot1,spot2,spot3,spot4,spot5,spot6,spot7,spot8,spot9);
+
+    static boolean uPlayFirst;
+    int moveCount=0;
 
     monalisa tank;
 
@@ -87,21 +121,174 @@ public class gui extends JFrame implements ActionListener
             }
         }
 
+        /*RED DYLAN
+        this function handles the majority of the code. waits for button event and then executes a check-run-check
+        cycle to determine if the user has won yet, and, if not, runs the ai method that is supposed to run a loop
+        from 0-8 and selects the first value that isn't in the List of user moves
+            RED DYLAN*/
         public void actionPerformed(ActionEvent e) {
-//        if(e.getSource()==swim)
-//        {
-//            for(int i=0; i<pieces.length; i++)
-//                pieces[i].swim();
-//        }
-//        if(e.getSource()==color) {
-//            //int x = Integer.parseInt(input.getText());
-//            //if (0 <= x && x < school.length)
-//            for(int x =0; x<pieces.length; x++)
-//                pieces[x].newcolor();
-//        }
-//        repaint();
+            if(e.getSource()==spot1) {
+                updateMoveCount(moveCount);
+                playerMoves.add(1);
+                spot1.setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/JSORE.png"));
+                validate();
+                winCheck(winCombos,playerMoves,clearBoard,moveCount,cpuMoves);
+                gandhi(clearBoard,moveCount,playerMoves,cpuMoves);
+                winCheck(winCombos,cpuMoves,clearBoard,moveCount,cpuMoves);
+            }
+            if(e.getSource()==spot2) {
+                updateMoveCount(moveCount);
+                playerMoves.add(2);
+                spot2.setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/JSORE.png"));
+                validate();
+                winCheck(winCombos,playerMoves,clearBoard,moveCount,cpuMoves);
+                gandhi(clearBoard,moveCount,playerMoves,cpuMoves);
+                winCheck(winCombos,cpuMoves,clearBoard,moveCount,cpuMoves);
+            }
+            if(e.getSource()==spot3) {
+                updateMoveCount(moveCount);
+                playerMoves.add(3);
+                spot3.setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/JSORE.png"));
+                validate();
+                winCheck(winCombos,playerMoves,clearBoard,moveCount,cpuMoves);
+                gandhi(clearBoard,moveCount,playerMoves,cpuMoves);
+                winCheck(winCombos,cpuMoves,clearBoard,moveCount,cpuMoves);
+            }
+            if(e.getSource()==spot4) {
+                updateMoveCount(moveCount);
+                playerMoves.add(4);
+                spot4.setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/JSORE.png"));
+                validate();
+                winCheck(winCombos,playerMoves,clearBoard,moveCount,cpuMoves);
+                gandhi(clearBoard,moveCount,playerMoves,cpuMoves);
+                winCheck(winCombos,cpuMoves,clearBoard,moveCount,cpuMoves);
+            }
+            if(e.getSource()==spot5) {
+                updateMoveCount(moveCount);
+                playerMoves.add(5);
+                spot5.setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/JSORE.png"));
+                validate();
+                winCheck(winCombos,playerMoves,clearBoard,moveCount,cpuMoves);
+                gandhi(clearBoard,moveCount,playerMoves,cpuMoves);
+                winCheck(winCombos,cpuMoves,clearBoard,moveCount,cpuMoves);
+            }
+            if(e.getSource()==spot6) {
+                updateMoveCount(moveCount);
+                playerMoves.add(6);
+                spot6.setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/JSORE.png"));
+                validate();
+                winCheck(winCombos,playerMoves,clearBoard,moveCount,cpuMoves);
+                gandhi(clearBoard,moveCount,playerMoves,cpuMoves);
+                winCheck(winCombos,cpuMoves,clearBoard,moveCount,cpuMoves);
+            }
+            if(e.getSource()==spot7) {
+                updateMoveCount(moveCount);
+                playerMoves.add(7);
+                spot7.setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/JSORE.png"));
+                validate();
+                winCheck(winCombos,playerMoves,clearBoard,moveCount,cpuMoves);
+                gandhi(clearBoard,moveCount,playerMoves,cpuMoves);
+                winCheck(winCombos,cpuMoves,clearBoard,moveCount,cpuMoves);
+            }
+            if(e.getSource()==spot8) {
+                updateMoveCount(moveCount);
+                playerMoves.add(8);
+                spot8.setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/JSORE.png"));
+                validate();
+                winCheck(winCombos,playerMoves,clearBoard,moveCount,cpuMoves);
+                gandhi(clearBoard,moveCount,playerMoves,cpuMoves);
+                winCheck(winCombos,cpuMoves,clearBoard,moveCount,cpuMoves);
+            }
+            if(e.getSource()==spot9) {
+                updateMoveCount(moveCount);
+                playerMoves.add(9);
+                spot9.setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/JSORE.png"));
+                validate();
+                winCheck(winCombos,playerMoves,clearBoard,moveCount,cpuMoves);
+                gandhi(clearBoard,moveCount,playerMoves,cpuMoves);
+                winCheck(winCombos,cpuMoves,clearBoard,moveCount,cpuMoves);
+            }
         }
 
+    public static void main(String [] args) throws FileNotFoundException
+    {
+        final JFrame frame = new JFrame();
+        Object[] options = { "Second", "First" };
+        int play = JOptionPane.showConfirmDialog(frame, "Welcome to Jerry Tac Toe!\nWould you like to go first?",
+                "Jerry", JOptionPane.YES_NO_OPTION);
+        if (play == JOptionPane.YES_OPTION)
+            uPlayFirst = true;
+        else if (play == JOptionPane.NO_OPTION)
+            uPlayFirst = false;
+        gui noOpinions=new gui();
+    }
+
+    public static void updateMoveCount(int x){
+            x++;
+    }
+    /*BLUE DYLAN
+    This is our ai function which essentially chooses the first spot not already picked by the user.
+     BLUE DYLAN*/
+    public static void gandhi(List<JButton> spot, int count, List<Integer> userMove, List<Integer> aiMove){
+            if(!uPlayFirst){
+                spot.get(4).setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/GUPTAWHIP.jpg"));
+            }
+            for(int i = 0;i<spot.size();i++){
+                if(!(userMove.contains(i))){
+                    aiMove.add(i);
+                    count++;
+                    (spot.get(i)).setIcon(new ImageIcon("/Users/dbakr/IdeaProjects/JerryTacToe/src/GUPTAWHIP.jpg"));
+                }
+            }
+    }
+    /*Oliva Marunde
+    This method is to check if the user or the cpu has won the game yet by determining if any of the winning sets are
+     subsets of the List of user/cpu moves. If the game is over, a window prompts users to play again. If the user 
+     selects play again, both selection lists are cleared and the count is reset to 0. The list of JButtons is then 
+     iterated through and its attached image icon is set to null.
+     */
+    public static void winCheck(List<List<Integer>> win, List<Integer> player, List<JButton> buttons, int count,
+                                List<Integer> aiMoves) {
+        boolean gameOver = false;
+        for (int i = 0; i < win.size(); i++) {
+            if ((player.containsAll(win.get(i)))) {
+                gameOver = true;
+            }
+        }
+            if (gameOver) {
+                JFrame frame = new JFrame();
+                int play = JOptionPane.showConfirmDialog(frame, "Thanks for playing!\nWould you like to play again?",
+                        "Game Over", JOptionPane.YES_NO_OPTION);
+                if (play == JOptionPane.YES_OPTION) {
+                    for (int i = 0; i < buttons.size(); i++) {
+                        (buttons.get(i)).setIcon(null);
+                    }
+                    count = 0;
+                    player.clear();
+                    aiMoves.clear();
+                }
+                else if (play == JOptionPane.NO_OPTION) {
+                    System.exit(0);
+                }
+            }
+        if(count==9){
+            JFrame frame = new JFrame();
+            int play = JOptionPane.showConfirmDialog(frame, "No more moves!\nWould you like to play again?",
+                    "Game Over", JOptionPane.YES_NO_OPTION);
+            if (play == JOptionPane.YES_OPTION) {
+                for (int i = 0; i < buttons.size(); i++) {
+                    buttons.get(i).setIcon(null);
+                }
+            }
+            else if (play == JOptionPane.NO_OPTION)
+                System.exit(0);
+        }
+    }
+    /*Andrew Nessler
+    This gui is an altered version of the one from class. It turns our JButtons into RoundButtons and then attaches 
+    the previously specified action listener to each one. It then draws our board. 
+     */
+    
     public gui() {
         addWindowListener(new close());
         setSize(900, 900);
@@ -115,12 +302,17 @@ public class gui extends JFrame implements ActionListener
         spot7 = new RoundButton();
         spot8 = new RoundButton();
         spot9 = new RoundButton();
-        //swim.addActionListener(this);
-        //color = new JButton("Color");
-        //color.addActionListener(this);
+        spot1.addActionListener(this);
+        spot2.addActionListener(this);
+        spot3.addActionListener(this);
+        spot4.addActionListener(this);
+        spot5.addActionListener(this);
+        spot6.addActionListener(this);
+        spot7.addActionListener(this);
+        spot8.addActionListener(this);
+        spot9.addActionListener(this);
         input = new JTextArea("0");
         tank = new monalisa();
-
 
         Container malcolm=getContentPane();
         malcolm.setLayout(new BorderLayout());
@@ -171,23 +363,8 @@ public class gui extends JFrame implements ActionListener
         spot9.setBounds(700,550,100,100);
         malcolm.add(spot9);
         malcolm.add( tank,"Center");
-        //malcolm.add( input,"South");
 
         setTitle("Jerry-Tac-Toe");
         setVisible(true);
-    }
-
-    public static void main(String [] args)
-    {
-        String turn;
-        Component frame;
-        Object[] options = { "Second", "First" };
-        int action = JOptionPane.showOptionDialog(frame, "Welcome to Jerry Tac Toe!\nWould you like to go first or second?",
-                "Welcome!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-        if (action == JOptionPane.YES_OPTION)
-            turn = "X";
-        else if (action == JOptionPane.NO_OPTION)
-            turn = "O";
-        gui noOpinions=new gui();
     }
 }
